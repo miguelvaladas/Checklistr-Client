@@ -1,14 +1,14 @@
 import './App.css'
-import {Navbar} from "./components/navbar.jsx";
+import {MainNavbar} from "./components/navbar.jsx";
 import {MainscreenWindow} from "./components/mainscreen-window.jsx";
-
+import {MainScreenWindow2} from "../src/components/mainscreen-window2";
 
 function App() {
 
   return (
     <div className="App">
-		<Navbar />
-		<MainscreenWindow />
+		<MainNavbar />
+		<MainScreenWindow2 />
 	
 	  </div>
   )
