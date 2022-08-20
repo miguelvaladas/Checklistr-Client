@@ -1,13 +1,25 @@
 .video-container{
-	display: flex;
-	height: 100vh;
+	/* display: flex; */
 	width: 100vw;
-	justify-content: center;
-	align-items: flex-start;
+	/* justify-content: center; */
+	/* align-items: flex-start; */
 	text-align: center;
-
+	position: relative;
 }
 
 #videoPlayer{
 	width:100%;
+	margin-top: -3.5%;
+	z-index: 0;
+}
+
+#videoText{
+	color: white;
+	text-shadow: 2px 2px 5px black;
+	font-size: 30px;
+	position: absolute; 
+	margin: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
 }

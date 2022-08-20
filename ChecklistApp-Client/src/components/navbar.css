@@ -7,6 +7,8 @@
 
 .navbar-brand {
 	color: white;
+	font-size:30px;
+	text-shadow: 2px 2px 4px black;
 }
 
 navbar-brand:focus, .navbar-brand:hover {

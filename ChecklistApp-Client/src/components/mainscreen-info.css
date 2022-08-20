@@ -1,0 +1,16 @@
+.info-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	width: 80%;
+}
+
+#outerContainer{
+	min-height: 40vh;
+	color: white;
+	background-color: lightseagreen;
+	display: flex;
+	justify-content: center;
+	margin-top: -6px;
+}

@@ -1,15 +1,25 @@
 import './App.css'
 import {MainNavbar} from "./components/navbar.jsx";
-import {MainscreenWindow} from "./components/mainscreen-window.jsx";
-import {MainScreenWindow2} from "../src/components/mainscreen-window2";
+import {MainScreen} from "./components/mainscreen.jsx";
+import {FooterApp} from "./components/footer";
+import {
+	BrowserRouter as Router,
+	Routes, 
+	Route
+} from 'react-router-dom';
 
 function App() {
 
   return (
     <div className="App">
 		<MainNavbar />
-		<MainScreenWindow2 />
-	
+		<Router>
+			<Routes>
+				<Route exact path='/' element={<MainScreen />} />
+				<Route path="/app/" />
+			</Routes>
+		</Router>	
+		<FooterApp />
 	  </div>
   )
 }

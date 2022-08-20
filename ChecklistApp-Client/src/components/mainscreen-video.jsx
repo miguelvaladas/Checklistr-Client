@@ -11,6 +11,9 @@ export const MainScreenVideo = () => {
 			<source src='../../src/assets/4K_227.mp4'>
 			</source>
 		</video>
+			<div id="videoText">
+				<h1>Click here to enter</h1>
+			</div>
 		</div>
 	)
 }

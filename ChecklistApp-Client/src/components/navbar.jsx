@@ -14,7 +14,7 @@ export const MainNavbar = () => {
 				src="../../src/assets/logoipsum-249.svg"
               width="30"
               height="30"
-              className="d-inline-block align-top"
+              className="d-inline-block align-center"
             />{'CheckListr'} 
           </Navbar.Brand>
         </Container>
