@@ -2,36 +2,65 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import "../../src/components/mainmodalbox.css";
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+async function loginUser(input){
+	return fetch("http://localhost:8080/checklist/login/", {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body:JSON.stringify(input)
+	}).then(data => data.json());
+}
 
 export const MainScreenModal = (props) => {
 
-	// const [showRegister,setShowRegister] = useState(false);		
 	const [showLogin, setShowLogin] = useState(true);
-
+	let navigate = useNavigate();
+	
 	const Login = () => {
+	
+		const [username,setUsername] = useState();
+		const [password, setPassword] = useState();
+
+		async function handleSubmit(e){
+		e.preventDefault();
+		const token = await loginUser({
+				username,
+				password
+		});
+		window.localStorage.setItem('token', token);
+			navigate("../dashboard", { replace: true });
+		// store do JWT e mudar de route
+		}
+
+		/**
+		 *
+		 *Dúvida: faço um .then() e mudo de Route e faço store do JWT.
+		 Random API Generator
+		 */
 		return(
 		<div>
 		<h2>Login</h2>	
-		<form>
-			<div><label for="username">Username:</label></div>
-			<div class="formFields"><input type="text" name='username' placeholder=" ✉️ Insert username...">
+		<form onSubmit={handleSubmit}>
+			<div><label>Username:</label></div>
+			<div className="formFields"><input type="text" name='username' placeholder=" ✉️ Insert username..." onChange={e => setUsername(e.target.value)}>
 			</input></div>
-			<div><label for="password">Password:</label></div>
+			<div><label>Password:</label></div>
 
-			<div class="formFields"><input type="text" name="password" placeholder=' 🔑 Insert password...'></input>
+			<div className="formFields"><input type="text" name="password" placeholder=' 🔑 Insert password...' onChange={e => setPassword(e.target.value)}></input>
 			</div>
 			 <div>
-		<input class="submitButton" type="submit" value="Submit"></input>
+		<input className="submitButton" type="submit" value="Submit"></input>
 			</div>
 		</form>
 			<p>You do not have an account? Click <a onClick={() => {
 				setShowLogin(false);
-				// setShowRegister(true);
 				}}>here</a> to sign-up.</p>
 		</div>
 		)
 	}
-
 
 	return ( 
 		<Modal {...props}
@@ -39,7 +68,6 @@ export const MainScreenModal = (props) => {
 			aria-labelledby="contained-modal-title-vcenter"
 			centered
 		>
-		
 		<Modal.Header closeButton>
 		</Modal.Header>
 
@@ -51,6 +79,4 @@ export const MainScreenModal = (props) => {
 		</Modal.Footer>
 		</Modal>
 	)	
-
-
 }

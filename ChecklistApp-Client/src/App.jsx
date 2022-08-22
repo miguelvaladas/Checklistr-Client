@@ -2,6 +2,7 @@ import './App.css'
 import {MainNavbar} from "./components/navbar.jsx";
 import {MainScreen} from "./components/mainscreen.jsx";
 import {FooterApp} from "./components/footer";
+import {Dashboard} from "./components/dashboard.jsx";
 import {
 	BrowserRouter as Router,
 	Routes, 
@@ -16,7 +17,7 @@ function App() {
 		<Router>
 			<Routes>
 				<Route exact path='/' element={<MainScreen />} />
-				<Route path="/app/" />
+				<Route path="/dashboard/" element={<Dashboard />} />
 			</Routes>
 		</Router>	
 		<FooterApp />
