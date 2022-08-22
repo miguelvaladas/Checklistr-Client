@@ -8,7 +8,7 @@ export const MainScreenVideo = () => {
 	return (
 		<div className='video-container'>
 		<video id="videoPlayer" autoPlay muted loop>
-			<source src='../../src/assets/4K_227.mp4'>
+			<source src='../../src/assets/4K_227 (1).mp4'>
 			</source>
 		</video>
 			<div id="videoText">
