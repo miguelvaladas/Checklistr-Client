@@ -1,4 +1,4 @@
-import "../../src/components/dashboard-checklist.css";
+import "./dashboard-checklist.css";
 import React, { useState } from 'react';
 
 export const DashboardChecklist = () => {

@@ -1,12 +1,12 @@
 import React from 'react';
-import "../../src/components/mainscreen-video.css";
+import "../../src/Home/home-video.css";
 
 
-export const MainScreenVideo = () => {
+export const HomeVideo = ({openModal}) => {
 
 	
 	return (
-		<div className='video-container'>
+		<div className='video-container' onClick={openModal}>
 		<video id="videoPlayer" autoPlay muted loop>
 			<source src='../../src/assets/4K_227 (1).mp4'>
 			</source>

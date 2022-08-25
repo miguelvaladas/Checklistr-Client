@@ -1,11 +1,11 @@
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import "../../src/components/mainmodalbox.css";
+import "../../src/Home/mainmodalbox.css";
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 async function loginUser(input){
-	return fetch("http://localhost:8080/checklist/login/", {
+	return fetch("http://localhost:8080/api/login", {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
