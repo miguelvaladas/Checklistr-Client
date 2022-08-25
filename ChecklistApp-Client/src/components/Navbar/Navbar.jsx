@@ -1,4 +1,4 @@
-import "./navbar.css"
+import "./Navbar.css"
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 
@@ -6,7 +6,7 @@ export const MainNavbar = () => {
 
 	return(
 
-		<Navbar scrolling dark expand="md" fixed="top">
+		<Navbar expand="md" fixed="top">
         <Container>
           <Navbar.Brand href="#home">
             <img

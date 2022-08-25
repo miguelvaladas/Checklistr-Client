@@ -1,4 +1,4 @@
-import "../../src/Home/mainscreen-info.css";
+import "./Info.css";
 
 export const InfoBox = () => {
 

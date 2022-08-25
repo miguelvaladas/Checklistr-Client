@@ -1,8 +1,8 @@
 import './App.css'
-import {MainNavbar} from "./components/Navbar/navbar.jsx";
-import {MainScreen} from "../src/Home/mainscreen.jsx";
-import {FooterApp} from "./components/Footer/footer.jsx";
-import {Dashboard} from "../src/Dashboard/dashboard.jsx";
+import {MainNavbar} from "./components/Navbar/Navbar.jsx";
+import {MainScreen} from "../src/Home/Home";
+import {FooterApp} from "./components/Footer/Footer.jsx";
+import {Dashboard} from "../src/Dashboard/Dashboard.jsx";
 import {
 	BrowserRouter as Router,
 	Routes, 

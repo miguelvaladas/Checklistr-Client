@@ -1,6 +1,5 @@
-import "../../src/Dashboard/dashboard.css";
-import "../../src/Dashboard/Checklist/dashboard-checklist.jsx";
-import {DashboardChecklist} from "../../src/Dashboard/Checklist/dashboard-checklist.jsx";
+import "./Dashboard.css";
+import {DashboardChecklist} from "../../src/Dashboard/Checklist/Checklist.jsx";
 
 export const Dashboard = () => {
 

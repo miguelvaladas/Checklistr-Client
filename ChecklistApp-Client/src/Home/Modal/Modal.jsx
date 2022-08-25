@@ -1,6 +1,6 @@
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import "../../src/Home/mainmodalbox.css";
+import "./Modal.css";
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

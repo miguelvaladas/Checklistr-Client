@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../src/Home/home-video.css";
+import "./HomeVideo.css";
 
 
 export const HomeVideo = ({openModal}) => {

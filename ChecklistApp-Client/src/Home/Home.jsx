@@ -1,21 +1,19 @@
 import React from 'react';
 import "../../src/App.css";
-import { MainScreenModal } from "../../src/Home/mainmodalbox";
-import { MainScreenVideo } from '../../src/Home/home-video';
-import {InfoBox} from "../../src/Home/mainscreen-info";
+import { MainScreenModal } from "../../src/Home/Modal/Modal.jsx";
+import { HomeVideo } from '../../src/Home/Video/HomeVideo.jsx';
+import {InfoBox} from "../../src/Home/Info/Info.jsx";
 export const MainScreen = () => {
 
 	const [showModal, setShowModal] = React.useState(false);
 
 	return(
 	<div>
-				
-		<MainScreenVideo openModal={() => setShowModal(true)} />
+		<HomeVideo openModal={() => setShowModal(true)} />
 
 		<InfoBox />
 		
 		<MainScreenModal show={showModal} onHide= {() =>  setShowModal(false)} />
-		
 	</div>
 	)
 }
