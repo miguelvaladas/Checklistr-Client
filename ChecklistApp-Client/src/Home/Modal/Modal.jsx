@@ -5,13 +5,19 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 async function loginUser(input){
-	return fetch("http://localhost:8080/api/login", {
+	let message = encodeURI(JSON.stringify(input));
+	return fetch("http://localhost:8080/login", {
 		method: 'POST',
 		headers: {
-			'Content-Type': 'application/json'
+			"Accept-Encoding": "gzip,deflate,br",
+			'Content-Type': 'application/x-www-form-urlencoded',
+			"Connection": "keep-alive",
+			"Accept" : "*/*",
 		},
-		body:JSON.stringify(input)
-	}).then(data => data.json());
+		body: "username=lolita&password=password"
+	}).then(data => console.log(data.json()))
+		// body: JSON.stringify(input)
+	// }).then(data => data.json());
 }
 
 export const MainScreenModal = (props) => {
@@ -27,8 +33,8 @@ export const MainScreenModal = (props) => {
 		async function handleSubmit(e){
 		e.preventDefault();
 		const token = await loginUser({
-				username,
-				password
+			username,
+			password
 		});
 		window.localStorage.setItem('token', token);
 			navigate("../dashboard", { replace: true });
