@@ -14,7 +14,7 @@ async function loginUser(input) {
       Accept: "*/*",
     },
     body: `username=${input.username}&password=${input.password}`,
-  }).then((data) => console.log(data.json()));
+  }).then((data) => data.json());
 }
 
 export const MainScreenModal = (props) => {
@@ -31,8 +31,12 @@ export const MainScreenModal = (props) => {
         username,
         password,
       });
-      window.localStorage.setItem("token", token);
-      navigate("../dashboard", { replace: true });
+      if (token.access_token && token.refresh_token) {
+        console.log(token);
+        window.localStorage.setItem("access_token", token.access_token);
+        window.localStorage.setItem("refresh_token", token.refresh_token);
+        navigate("../dashboard", { replace: true });
+      }
     }
 
     return (
