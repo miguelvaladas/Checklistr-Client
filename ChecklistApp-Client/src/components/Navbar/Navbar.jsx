@@ -6,7 +6,7 @@ export const MainNavbar = () => {
   return (
     <Navbar expand="md" fixed="top">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="http://localhost:5173/">
           <img
             alt="logo"
             src="../../src/assets/logoipsum-249.svg"
