@@ -1,3 +1,7 @@
-#dashboard{
-	margin-top:10vh;
+#dashboard {
+  padding-top: 10vh;
+  background-image: url("../assets/4K_227_Background.jpg");
+  background-size: cover;
+  color: white;
+  background-position: center;
 }

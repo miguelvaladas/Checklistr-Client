@@ -25,8 +25,7 @@ export const DashboardChecklist = () => {
         });
       })
       .then((data) => data.json())
-      .then((activity) => setActivities([...activities, activity]))
-      .then(() => console.log(activities));
+      .then((activity) => setActivities([...activities, activity]));
   }
 
   // running useEffect only once by passing empty array as the second arg. Similar to componenentDidMount
@@ -45,7 +44,6 @@ export const DashboardChecklist = () => {
       )
         .then((data) => data.json())
         .then((results) => {
-          setActivities([]);
           let temporary = [];
           results.map((obj) => {
             temporary.push(obj);
