@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import { ActivityBody } from "./Body/ChecklistBody.jsx";
 
 export const DashboardChecklist = () => {
-  let activitiesCounter = 0;
-  const [newActivity, setNewActivity] = useState("");
-  const [activities, setActivities] = useState([]);
+  const [newActivity, setNewActivity] = useState();
+  const [refresh, setRefresh] = useState(0);
+  let activities = [];
 
   async function addActivity() {
     let message = {
@@ -18,20 +18,12 @@ export const DashboardChecklist = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(message),
-    })
-      .then(() => {
-        return fetch(`http://localhost:8080/api/activities/${newActivity}`, {
-          method: "GET",
-        });
-      })
-      .then((data) => data.json())
-      .then((activity) => setActivities([...activities, activity]))
-      .then(() => console.log(activities));
+    }).then((data) => console.log(data));
   }
 
-  // running useEffect only once by passing empty array as the second arg. Similar to componenentDidMount
   useEffect(() => {
     async function getUserActivities() {
+      activities = [];
       return fetch(
         `http://localhost:8080/api/activities/username=${localStorage.getItem(
           "username"
@@ -45,16 +37,14 @@ export const DashboardChecklist = () => {
       )
         .then((data) => data.json())
         .then((results) => {
-          setActivities([]);
-          let temporary = [];
           results.map((obj) => {
-            temporary.push(obj);
+            activities.push(obj);
           });
-          setActivities(temporary);
-        });
+        })
+        .then(console.log(activities));
     }
     getUserActivities();
-  }, []);
+  }, [refresh]);
 
   return (
     <div id="checklist">
@@ -67,16 +57,10 @@ export const DashboardChecklist = () => {
           </tr>
         </thead>
         <tbody id="checklistContent">
-          {activities.map((activity) => {
-            activitiesCounter++;
-            return (
-              <ActivityBody
-                activity={activity}
-                key={activitiesCounter}
-                activities={activities}
-                setActivities={setActivities}
-              />
-            );
+          {activities.map((obj) => {
+            console.log(activities);
+
+            <ActivityBody activity={obj} />;
           })}
         </tbody>
         <tfoot>
@@ -86,16 +70,16 @@ export const DashboardChecklist = () => {
               <input
                 placeholder="Add new activity..."
                 type="text"
-                value={newActivity}
+                id="addActivity"
                 onChange={(e) => setNewActivity(e.target.value)}
               ></input>
             </td>
             <td>
               <button
-                onClick={(e) => {
-                  e.preventDefault();
+                onClick={() => {
                   addActivity();
-                  setNewActivity("");
+                  setRefresh(refresh + 1);
+                  document.getElementById("addActivity").value = "";
                 }}
               >
                 Add
