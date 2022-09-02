@@ -17,14 +17,15 @@ export const ActivityBody = ({ activity, activities, setActivities }) => {
 
   return (
     <tr>
-      <td>-</td>
-      <td>{activity.description}</td>
-      <td>
+      <td className="tableCell">-</td>
+      <td className="tableCell">{activity.description}</td>
+      <td className="tableCell">
         <button
           onClick={(e) => {
             e.preventDefault();
             removeActivity();
           }}
+          className="checklistButton"
         >
           X
         </button>

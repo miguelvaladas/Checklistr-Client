@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { ActivityBody } from "./Body/ChecklistBody.jsx";
 
 export const DashboardChecklist = () => {
-  let activitiesCounter = 0;
   const [newActivity, setNewActivity] = useState("");
   const [activities, setActivities] = useState([]);
 
@@ -19,63 +18,44 @@ export const DashboardChecklist = () => {
       },
       body: JSON.stringify(message),
     })
-      .then(() => {
-        return fetch(`http://localhost:8080/api/activities/${newActivity}`, {
-          method: "GET",
-        });
-      })
       .then((data) => data.json())
       .then((activity) => setActivities([...activities, activity]));
   }
 
+  const fetchActivities = async () => {
+    return fetch(
+      `http://localhost:8080/api/activities/username=${localStorage.getItem(
+        "username"
+      )}`
+    )
+      .then((data) => data.json())
+      .then(setActivities);
+  };
+
   // running useEffect only once by passing empty array as the second arg. Similar to componenentDidMount
   useEffect(() => {
-    async function getUserActivities() {
-      return fetch(
-        `http://localhost:8080/api/activities/username=${localStorage.getItem(
-          "username"
-        )}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-        .then((data) => data.json())
-        .then((results) => {
-          let temporary = [];
-          results.map((obj) => {
-            temporary.push(obj);
-          });
-          setActivities(temporary);
-        });
-    }
-    getUserActivities();
+    fetchActivities();
   }, []);
 
   return (
     <div id="checklist">
-      <table>
+      <table id="checklistTable">
         <thead>
           <tr>
-            <th>Status</th>
-            <th>Activity</th>
-            <th>Remove</th>
+            <th className="tableHeader">Status</th>
+            <th className="tableHeader">Activity</th>
+            <th className="tableHeader">Remove</th>
           </tr>
         </thead>
-        <tbody id="checklistContent">
-          {activities.map((activity) => {
-            activitiesCounter++;
-            return (
-              <ActivityBody
-                activity={activity}
-                key={activitiesCounter}
-                activities={activities}
-                setActivities={setActivities}
-              />
-            );
-          })}
+        <tbody>
+          {activities.map((activity) => (
+            <ActivityBody
+              activity={activity}
+              key={activity.id}
+              activities={activities}
+              setActivities={setActivities}
+            />
+          ))}
         </tbody>
         <tfoot>
           <tr>
@@ -95,8 +75,9 @@ export const DashboardChecklist = () => {
                   addActivity();
                   setNewActivity("");
                 }}
+                className="addButton"
               >
-                Add
+                +
               </button>
             </td>
           </tr>

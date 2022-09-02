@@ -4,8 +4,9 @@ import { DashboardChecklist } from "../../src/Dashboard/Checklist/Checklist.jsx"
 export const Dashboard = () => {
   return (
     <div id="dashboard">
-      <h1>Hello, {localStorage.getItem("username")}!</h1>
-
+      <div className="greetingContainer">
+        <h1 className="greeting">Hello, {localStorage.getItem("username")}!</h1>
+      </div>
       <DashboardChecklist />
     </div>
   );

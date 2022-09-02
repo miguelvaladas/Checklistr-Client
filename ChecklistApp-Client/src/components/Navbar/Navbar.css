@@ -1,18 +1,36 @@
 #navbar {
-	display: flex;
-	justify-content: space-between;
-
-
+  display: flex;
+  justify-content: space-between;
 }
 
 .navbar-brand {
-	color: white;
-	font-size:30px;
-	text-shadow: 2px 2px 4px black;
+  color: white;
+  font-size: 30px;
+  text-shadow: 2px 2px 4px black;
 }
 
-navbar-brand:focus, .navbar-brand:hover {
-	color: #D8BFD8;
-	font-weight:bolder;
+.navbar-brand:focus,
+.navbar-brand:hover {
+  color: white;
 }
 
+.navText {
+  /* background-color: #2d68cc; */
+  background-color: White;
+  color: black;
+  font-size: 15px;
+  border-radius: 100px;
+  padding: 0 15px 0 0;
+}
+
+#dropdown {
+  background-color: transparent;
+  color: black;
+  padding: 0;
+  border-color: transparent;
+  --bs-btn-focus-shadow-rgb: white;
+}
+
+.navBrand {
+  cursor: pointer;
+}

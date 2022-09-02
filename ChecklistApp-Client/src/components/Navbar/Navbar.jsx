@@ -1,12 +1,15 @@
 import "./Navbar.css";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
+import { MainDropdown } from "./Dropdown/Dropdown";
+import { useNavigate } from "react-router-dom";
 
 export const MainNavbar = () => {
+  let navigate = useNavigate();
   return (
     <Navbar expand="md" fixed="top">
       <Container>
-        <Navbar.Brand href="http://localhost:5173/">
+        <Navbar.Brand className="navBrand" onClick={() => navigate("/")}>
           <img
             alt="logo"
             src="../../src/assets/logoipsum-249.svg"
@@ -16,6 +19,7 @@ export const MainNavbar = () => {
           />
           {"CheckListr"}
         </Navbar.Brand>
+        <MainNavbar navigate={navigate} />
       </Container>
     </Navbar>
   );
