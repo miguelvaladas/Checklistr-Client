@@ -7,7 +7,6 @@ import { Register } from "../Modal/Register/Register.jsx";
 
 export const MainScreenModal = (props) => {
   const [showLogin, setShowLogin] = useState(true);
-
   return (
     <Modal
       {...props}

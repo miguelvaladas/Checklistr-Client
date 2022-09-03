@@ -5,12 +5,11 @@ export const ActivityBody = ({ activity, activities, setActivities }) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: response,
     }).then(() => {
-      let result = activities.filter(
-        (element) => element.description !== activity.description
-      );
+      let result = activities.filter((element) => element.id !== activity.id);
       setActivities(result);
     });
   }

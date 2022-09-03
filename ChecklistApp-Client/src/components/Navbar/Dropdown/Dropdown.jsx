@@ -1,5 +1,6 @@
 import "../Navbar.css";
 import Navbar from "react-bootstrap/Navbar";
+import Dropdown from "react-bootstrap/Dropdown";
 
 export const MainDropdown = ({ navigate }) => {
   return (

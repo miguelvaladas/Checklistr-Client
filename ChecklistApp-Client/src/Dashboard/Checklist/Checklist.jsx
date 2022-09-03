@@ -15,6 +15,7 @@ export const DashboardChecklist = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
       body: JSON.stringify(message),
     })
@@ -26,13 +27,17 @@ export const DashboardChecklist = () => {
     return fetch(
       `http://localhost:8080/api/activities/username=${localStorage.getItem(
         "username"
-      )}`
+      )}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      }
     )
       .then((data) => data.json())
       .then(setActivities);
   };
 
-  // running useEffect only once by passing empty array as the second arg. Similar to componenentDidMount
   useEffect(() => {
     fetchActivities();
   }, []);

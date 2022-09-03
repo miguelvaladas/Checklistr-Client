@@ -19,7 +19,9 @@ export const MainNavbar = () => {
           />
           {"CheckListr"}
         </Navbar.Brand>
-        <MainNavbar navigate={navigate} />
+        {localStorage.length === 0 ? null : (
+          <MainDropdown navigate={navigate} />
+        )}
       </Container>
     </Navbar>
   );
