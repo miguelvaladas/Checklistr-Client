@@ -1,6 +1,7 @@
 import "./Checklist.css";
 import React, { useState, useEffect } from "react";
 import { ActivityBody } from "./Body/ChecklistBody.jsx";
+import { filterResponse } from "../../Interceptors/ResponseFilter.js";
 
 export const DashboardChecklist = () => {
   const [newActivity, setNewActivity] = useState("");
@@ -20,6 +21,7 @@ export const DashboardChecklist = () => {
       body: JSON.stringify(message),
     })
       .then((data) => data.json())
+      .then((data) => filterResponse(data, addActivity))
       .then((activity) => setActivities([...activities, activity]));
   }
 
@@ -35,6 +37,7 @@ export const DashboardChecklist = () => {
       }
     )
       .then((data) => data.json())
+      .then((data) => filterResponse(data, fetchActivities))
       .then(setActivities);
   };
 

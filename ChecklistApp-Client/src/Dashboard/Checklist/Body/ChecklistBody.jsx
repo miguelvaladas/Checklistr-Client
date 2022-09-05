@@ -1,3 +1,5 @@
+import { filterResponse } from "../../../Interceptors/ResponseFilter";
+
 export const ActivityBody = ({ activity, activities, setActivities }) => {
   async function removeActivity() {
     const response = JSON.stringify({ id: activity.id });
@@ -8,10 +10,12 @@ export const ActivityBody = ({ activity, activities, setActivities }) => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: response,
-    }).then(() => {
-      let result = activities.filter((element) => element.id !== activity.id);
-      setActivities(result);
-    });
+    })
+      .then((data) => filterResponse(data, removeActivity))
+      .then(() => {
+        let result = activities.filter((element) => element.id !== activity.id);
+        setActivities(result);
+      });
   }
 
   return (
