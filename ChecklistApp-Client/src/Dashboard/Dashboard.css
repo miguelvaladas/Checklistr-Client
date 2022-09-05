@@ -5,6 +5,7 @@
   color: white;
   background-position: center;
   background-attachment: fixed;
+  min-height: 70vh;
 }
 
 .greeting {

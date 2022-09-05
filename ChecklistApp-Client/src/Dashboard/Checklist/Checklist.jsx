@@ -21,8 +21,12 @@ export const DashboardChecklist = () => {
       body: JSON.stringify(message),
     })
       .then((data) => data.json())
-      .then((data) => filterResponse(data, addActivity))
-      .then((activity) => setActivities([...activities, activity]));
+      .then((data) => filterResponse(data))
+      .then((activity) =>
+        activity !== undefined
+          ? setActivities([...activities, activity])
+          : addActivity()
+      );
   }
 
   const fetchActivities = async () => {
@@ -37,8 +41,10 @@ export const DashboardChecklist = () => {
       }
     )
       .then((data) => data.json())
-      .then((data) => filterResponse(data, fetchActivities))
-      .then(setActivities);
+      .then((data) => filterResponse(data))
+      .then((data) =>
+        data !== undefined ? setActivities(data) : fetchActivities()
+      );
   };
 
   useEffect(() => {
