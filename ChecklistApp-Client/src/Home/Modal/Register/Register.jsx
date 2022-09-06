@@ -1,9 +1,9 @@
-import "./Register.css";
+import "../Modal.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../Login/Login.jsx";
 
 async function registerUser(input) {
-  let jsonString = JSON.stringify(input);
   return fetch("http://localhost:8080/api/users", {
     method: "POST",
     headers: {
@@ -12,21 +12,8 @@ async function registerUser(input) {
       Connection: "keep-alive",
       Accept: "*/*",
     },
-    body: jsonString,
+    body: JSON.stringify(input),
   });
-}
-
-async function loginUser(input) {
-  return fetch("http://localhost:8080/login", {
-    method: "POST",
-    headers: {
-      "Accept-Encoding": "gzip,deflate,br",
-      "Content-Type": "application/x-www-form-urlencoded",
-      Connection: "keep-alive",
-      Accept: "*/*",
-    },
-    body: `username=${input.username}&password=${input.password}`,
-  }).then((data) => data.json());
 }
 
 export const Register = ({ setShowLogin }) => {
@@ -85,7 +72,7 @@ export const Register = ({ setShowLogin }) => {
       </form>
       <p>
         Already have an account?{" "}
-        <a style={{ color: "lightblue" }} onClick={() => setShowLogin(true)}>
+        <a className="clickableTag" onClick={() => setShowLogin(true)}>
           HERE
         </a>{" "}
         to login.

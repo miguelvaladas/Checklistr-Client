@@ -6,9 +6,13 @@ export const StatusSelector = ({ activity }) => {
 
   useEffect(() => {
     setSelectedValue(activity.status);
+    console.log(activity);
   }, []);
 
   useEffect(() => {
+    console.log("event value: " + e.target.value);
+    console.log("selectedValue: " + selectedValue);
+
     async function selectedValueHandler() {
       let message = {
         id: activity.id,
@@ -28,10 +32,29 @@ export const StatusSelector = ({ activity }) => {
         .then((data) =>
           data !== undefined
             ? (activity.status = selectedValue)
-            : selectedValueHandler()
+            : changeHandler(e)
         );
     }
-    selectedValueHandler();
+    let message = {
+      id: activity.id,
+      description: activity.description,
+      status: selectedValue,
+    };
+    return fetch("http://localhost:8080/api/activities", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+      body: JSON.stringify(message),
+    })
+      .then((response) => response.json())
+      .then((response) => filterResponse(response))
+      .then((data) =>
+        data !== undefined
+          ? (activity.status = selectedValue)
+          : changeHandler(e)
+      );
   }, [selectedValue]);
 
   return (
@@ -40,11 +63,11 @@ export const StatusSelector = ({ activity }) => {
       value={selectedValue}
       onChange={(e) => setSelectedValue(e.target.value)}
     >
-      <option value="DEFAULT">🔖</option>
+      <option value="DEFAULT">0</option>
 
-      <option value="RED">📕</option>
-      <option value="YELLOW">📙</option>
-      <option value="GREEN">📗</option>
+      <option value="RED">1</option>
+      <option value="YELLOW">2</option>
+      <option value="GREEN">3</option>
     </select>
   );
 };

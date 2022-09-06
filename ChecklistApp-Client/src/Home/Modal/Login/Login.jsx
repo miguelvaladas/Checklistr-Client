@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-async function loginUser(input) {
+export async function loginUser(input) {
   return fetch("http://localhost:8080/login", {
     method: "POST",
     headers: {
@@ -70,7 +70,7 @@ export const Login = ({ setShowLogin }) => {
       </form>
       <p>
         You do not have an account? Click{" "}
-        <a style={{ color: "lightblue" }} onClick={() => setShowLogin(false)}>
+        <a className="clickableTag" onClick={() => setShowLogin(false)}>
           HERE
         </a>{" "}
         to sign-up.
