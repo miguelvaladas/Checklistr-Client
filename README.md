@@ -1,6 +1,6 @@
 # Checklistr 
 
-I am currently building Checklistr (MVP phase), a "checklist" app that allows users to keep track of whatever they want!
+I am currently building Checklistr (MVP phase), a "checklist" SPA (Single Page Application) that allows users to keep track of whatever they want!
 
 Right after my bootcamp was over I decided I wanted to further enhance my skills and learn <b>React</b> and <b>Spring Boot</b>. And I did! However I have always been curious about how authentication and authorization systems work, so it seemed like a great opportunity to also learn <b>Spring Security</b> and <b>JWT</b>. It took me a little over 2 weeks to learn those skills on my own and get the app from zero to the MVP phase.
 
