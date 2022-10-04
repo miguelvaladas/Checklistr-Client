@@ -41,7 +41,7 @@ Frontend: <b>React</b>, <b>Vite</b> and <b>Bootstrap</b>.</br>
 Backend: <b>Spring Boot</b>, <b>Spring Security</b>, <b>JWT</b>, <b>Hibernate</b> and <b>MySQL</b>.
 
 ## Considerations
-I am currently looking for my first opportunity as a software developer and I'm passionate about both frontend and backend. If you are interested in my work, feel free to send me a message through <a href="https://www.linkedin.com/in/miguel-valadas/">LinkedIn</a> or <a href="mailto:airesvaladas@gmail.com">email</a>.
+If you are interested in my work, feel free to send me a message through <a href="https://www.linkedin.com/in/miguel-valadas/">LinkedIn</a> or <a href="mailto:airesvaladas@gmail.com">email</a>.
 
 ## NextSteps
 There are a lot of things to complete within the app, which I intend to do in the next couple of weeks.
