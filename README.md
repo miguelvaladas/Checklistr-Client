@@ -26,6 +26,7 @@ git clone https://github.com/miguelvaladas/Checklistr-Server.git
 
 2. On the root of your client repository run:
 ```sh
+npm install
 npm run dev
 ```
 
